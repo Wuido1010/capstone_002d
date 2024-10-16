@@ -1,0 +1,83 @@
+var sendBtn = document.getElementById('sendBtn');
+var textbox = document.getElementById('textbox');
+var chatContainer = document.getElementById('chatContainer');
+
+var user = { message  };
+
+var arrayOfPossibleMessages = [
+    {message hola, response ¡Hola! Bienvenido a nuestra tienda de repuestos. ¿En que puedo ayudarte hoy},
+    {message tienen [pieza], response Dejame verificar. ¿Puedes darme mas detalles sobre la pieza que necesitas, como el modelo del vehiculo},
+    {message cuanto cuesta [pieza], response El precio de la pieza depende del modelo del vehiculo. Por favor, dame mas informacion para ayudarte mejor.},
+    {message como puedo hacer un pedido, response Puedes hacer un pedido directamente en nuestro sitio web, o te puedo guiar durante el proceso.},
+    {message que metodos de pago aceptan, response Aceptamos tarjetas de credito, debito, y pagos en efectivo mediante puntos autorizados.},
+    {message hacen envios, response Si, realizamos envios a nivel nacional. ¿Puedes proporcionarme tu ubicacion para mas detalles},
+    {message cuanto tardan los envios, response El tiempo de envio depende de tu ubicacion, pero usualmente toma entre 3 y 5 dias habiles.},
+    {message cual es su horario de atencion, response Estamos disponibles de lunes a viernes de 900 a 1800 horas.},
+    {message necesito asesoria para encontrar una pieza, response Claro, estare encantado de ayudarte a encontrar la pieza correcta. ¿Puedes darme la marca y modelo de tu vehiculo},
+    {message ofrecen garantias, response Si, ofrecemos garantia para nuestras piezas. La duracion depende del tipo de pieza comprada.},
+    {message puedo devolver una pieza, response Aceptamos devoluciones dentro de los 30 dias de la compra, siempre que la pieza este en su estado original.},
+    {message donde estan ubicados, response Nuestra tienda principal esta en Maipu, pero tambien puedes hacer pedidos en linea.},
+    {message gracias, response ¡De nada! Si necesitas mas ayuda, estare aqui.},
+    {message tienen descuentos, response Si, tenemos descuentos especiales en varias piezas. ¿Que pieza estas buscando},
+    {message que marcas de repuestos tienen, response Trabajamos con marcas reconocidas como Bosch, Delphi, y NGK, entre otras.},
+    {message como puedo saber si la pieza es compatible con mi auto, response Puedes darme el modelo, año y version de tu vehiculo y con gusto verificare la compatibilidad por ti.},
+    {message que piezas tienen para [marca de auto], response Contamos con una amplia variedad de piezas para [marca de auto]. ¿Hay alguna pieza en particular que necesites},
+    {message adios, response ¡Gracias por visitarnos! Que tengas un excelente dia.},
+    {message puedo recoger mi pedido en la tienda, response Si, puedes hacer una compra en linea y elegir la opcion de recoger en tienda.},
+    {message ofrecen instalacion, response Por ahora no ofrecemos instalacion, pero podemos recomendarte talleres especializados.},
+    {message pueden ayudarme a identificar un problema en mi auto, response No hacemos diagnosticos, pero podemos ayudarte a encontrar la pieza adecuada si ya sabes lo que necesitas.},
+    {message venden aceites o liquidos, response Si, contamos con una variedad de aceites de motor, refrigerantes y otros liquidos para tu vehiculo.},
+    {message tienen algun catalogo, response Puedes encontrar nuestro catalogo completo en nuestro sitio web, donde podras buscar por marca y tipo de pieza.},
+    {message que ofertas tienen, response Actualmente tenemos descuentos en frenos y filtros. ¿Te interesa algun producto en particular},
+    {message puedo hacer una consulta por telefono, response Si, claro. Puedes llamarnos al numero que aparece en nuestro sitio web y con gusto te atenderemos.},
+    {message que pasa si la pieza no funciona, response Si la pieza no funciona, puedes hacer uso de la garantia. Contactanos para iniciar el proceso de cambio.}
+];
+
+function sendMessage(userMessage) {
+    var messageElement = document.createElement('div');
+    messageElement.style.textAlign = right;
+    messageElement.style.margin = 10px;
+    messageElement.innerHTML = spanTu span + span + userMessage + span;
+    chatContainer.appendChild(messageElement);
+}
+
+function chatbotResponse(userMessage) {
+    var chatbotMessage = ;
+    var normalizedUserMessage = userMessage.toLowerCase().trim();
+
+     Busca coincidencias
+    var result = arrayOfPossibleMessages.find(val = {
+        return val.message.split( ).every(keyword = normalizedUserMessage.includes(keyword));
+    });
+    if (result) {
+        chatbotMessage = result.response;
+    } else {
+        chatbotMessage = Lo siento, no tengo una respuesta para eso. ¿Podrias intentarlo de otra forma;
+    }
+
+ 
+    var messageElement = document.createElement('div');
+    messageElement.innerHTML = spanChatbot span + span + chatbotMessage + span;
+    chatContainer.appendChild(messageElement);
+
+
+
+    setTimeout(()={
+
+        chatContainer.appendChild(messageElement);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+    },1000)
+}
+
+sendBtn.addEventListener('click', (e) = {
+    let userMessage = textbox.value;
+    if (userMessage == ) {
+        alert('Por favor escriba un mensaje');
+    } else {
+        let userMessageText = userMessage.trim();
+        user.message = userMessageText;
+        sendMessage(userMessageText);
+        chatbotResponse(userMessageText); 
+        textbox.value = ;
+    }
+});
